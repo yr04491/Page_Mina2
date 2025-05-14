@@ -19,15 +19,35 @@
   padding: 20px;
   max-width: 90%;
   margin: 0 auto;
-  height: 250px; /* 固定の高さを設定 */
+  /* すべてのカードで一貫した高さ */
+  height: 250px;
 }
 
 .officer-message {
   flex: 1;
   line-height: 1.7;
   text-align: left;
-  overflow-y: auto; /* 内容が多い場合はスクロール可能に */
-  max-height: 210px; /* メッセージ部分の最大高さ */
+  /* 内容が多い場合はスクロール可能に */
+  overflow-y: auto;
+  /* 最大高さを制限してスクロールが始まるようにする */
+  max-height: 210px;
+  /* スクロールバーのデザインを改善（オプション） */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Webkit系ブラウザ用のスクロールバーカスタマイズ */
+.officer-message::-webkit-scrollbar {
+  width: 5px;
+}
+
+.officer-message::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.officer-message::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 .officer-photo-container {
@@ -35,6 +55,7 @@
   flex-direction: column;
   align-items: center;
   min-width: 150px;
+  /* 写真コンテナに固定高さを設定しない */
 }
 
 .officer-photo {
@@ -73,10 +94,17 @@
   color: #333;
 }
 
+/* メッセージが少ない場合、中央配置にするオプション */
+.officer-message.short-message {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   .officer-card {
     flex-direction: column;
-    height: auto; /* モバイルでは高さを自動に */
+    /* モバイルでは高さを自動調整して写真と情報が見えるようにする */
+    height: auto;
     max-height: none;
   }
   
@@ -85,6 +113,7 @@
   }
   
   .officer-message {
-    max-height: 300px; /* モバイルでのメッセージ最大高さ */
+    /* モバイルでもスクロール可能に */
+    max-height: 300px;
   }
 }
