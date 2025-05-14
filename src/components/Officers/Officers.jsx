@@ -3,30 +3,24 @@ import './Officers.css';
 
 // 仮にGitHub Pagesでのデプロイを考慮したベースパス取得関数
 const getBasePath = () => {
-  return process.env.NODE_ENV === 'production'
+  return process.env.NODE_ENV === 'production' 
     ? '/Page_Mina' // GitHubリポジトリ名に合わせる
     : '';
 };
 
 const Officers = forwardRef((props, ref) => {
-  // 各役員のメッセージの長さを判定する関数
-  const isShortMessage = (message) => {
-    // 文字数やテキスト内容に基づいて短いメッセージかどうかを判定
-    return message.length < 50; // 例として50文字未満を「短い」と定義
-  };
-
   return (
     <section ref={ref} id="officers" className="section officers-section">
       <div className="container">
         <h2>会社役員</h2>
         <div className="officers-list">
           {/* 1人目: CEO */}
-          <div className="officer-card">
+          <div className="officer-item">
             <div className="officer-photo-container">
-              <img
-                className="officer-photo"
-                src={`${getBasePath()}/images/CEO.png`}
-                alt="田濃 一翔"
+              <img 
+                className="officer-photo" 
+                src={`${getBasePath()}/images/CEO.png`} 
+                alt="田濃 一翔" 
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "https://placehold.jp/150x150.png";
@@ -40,20 +34,21 @@ const Officers = forwardRef((props, ref) => {
               </div>
             </div>
             <div className="officer-message">
-              私たちは、すべての⼦どもたちが「<b>⾃分に合った学び</b>」に出会える社会を⽬指しています。
+              私たちは、すべての⼦どもたちが<b>⾃分に合った学び</b>に出会える社会を⽬指しています。
               ⾼専での学びの中で<b>⽣成AI</b>と出会った私たちは、その可能性に⼤きな希望を感じました。
-              これからの時代、⽣成AIを「<b>使いこなす⼒</b>」は読み書きと同じくらい重要なスキルになると確信しています。
+              これからの時代、⽣成AIを<b>使いこなす⼒</b>は読み書きと同じくらい重要なスキルになると確信しています。
               だからこそ、⼦どもたちが早い段階からAIと⾃然に関わり、
               ⾃分の学びを<b>⾃分で広げていける</b>環境が必要です。
             </div>
           </div>
+          
           {/* 2人目: CMO */}
-          <div className="officer-card">
+          <div className="officer-item">
             <div className="officer-photo-container">
-              <img
-                className="officer-photo"
-                src={`${getBasePath()}/images/CMO.png`}
-                alt="青木 愛一郎"
+              <img 
+                className="officer-photo" 
+                src={`${getBasePath()}/images/CMO.png`} 
+                alt="青木 愛一郎" 
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "https://placehold.jp/150x150.png";
@@ -74,13 +69,14 @@ const Officers = forwardRef((props, ref) => {
               誰もが⾃分のペースで、⾃分らしく学べること。
             </div>
           </div>
+          
           {/* 3人目: COO - 短いメッセージの例 */}
-          <div className="officer-card">
+          <div className="officer-item">
             <div className="officer-photo-container">
-              <img
-                className="officer-photo"
-                src={`${getBasePath()}/images/COO.png`}
-                alt="安倍 誠明"
+              <img 
+                className="officer-photo" 
+                src={`${getBasePath()}/images/COO.png`} 
+                alt="安倍 誠明" 
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "https://placehold.jp/150x150.png";
@@ -92,12 +88,10 @@ const Officers = forwardRef((props, ref) => {
                 <div className="officer-title">福井大学大学院</div>
                 <div className="officer-title">工学研究科博士前期課程</div>
                 <div className="officer-title">産業創成工学専攻 在学</div>
-
               </div>
             </div>
-           // シンプルに固定クラスを使う場合
             <div className="officer-message">
-              やるぞー！！
+              やるぞー!！！
             </div>
           </div>
         </div>
