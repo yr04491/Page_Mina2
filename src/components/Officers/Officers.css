@@ -5,57 +5,26 @@
 .officers-list {
   display: flex;
   flex-direction: column;
+  gap: 40px;
+}
+
+.officer-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
   gap: 30px;
-}
-
-.officer-card {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
   background-color: #fff;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 90%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
-  /* すべてのカードで一貫した高さ */
-  height: 250px;
-}
-
-.officer-message {
-  flex: 1;
-  line-height: 1.7;
-  text-align: left;
-  /* 内容が多い場合はスクロール可能に */
-  overflow-y: auto;
-  /* 最大高さを制限してスクロールが始まるようにする */
-  max-height: 210px;
-  /* スクロールバーのデザインを改善（オプション） */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-}
-
-/* Webkit系ブラウザ用のスクロールバーカスタマイズ */
-.officer-message::-webkit-scrollbar {
-  width: 5px;
-}
-
-.officer-message::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.officer-message::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
 }
 
 .officer-photo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 150px;
-  /* 写真コンテナに固定高さを設定しない */
 }
 
 .officer-photo {
@@ -64,7 +33,7 @@
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #f5f5f5;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .officer-info {
@@ -89,31 +58,33 @@
   line-height: 1.4;
 }
 
+.officer-message {
+  text-align: left;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .officer-message b {
   font-weight: 600;
   color: #333;
 }
 
-/* メッセージが少ない場合、中央配置にするオプション */
-.officer-message.short-message {
-  display: flex;
-  align-items: center;
-}
-
+/* メディアクエリ：スマホ対応 */
 @media (max-width: 768px) {
-  .officer-card {
-    flex-direction: column;
-    /* モバイルでは高さを自動調整して写真と情報が見えるようにする */
-    height: auto;
-    max-height: none;
+  .officer-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 20px;
   }
-  
+
   .officer-photo-container {
-    margin: 0 auto 20px;
+    margin: 0 auto;
   }
-  
+
   .officer-message {
-    /* モバイルでもスクロール可能に */
-    max-height: 300px;
+    text-align: left;
+    padding-top: 10px;
   }
 }
