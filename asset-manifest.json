@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Page_Mina2/static/css/main.ee91480c.css",
+    "main.js": "/Page_Mina2/static/js/main.850b81c8.js",
+    "static/js/453.fbc15508.chunk.js": "/Page_Mina2/static/js/453.fbc15508.chunk.js",
+    "index.html": "/Page_Mina2/index.html",
+    "main.ee91480c.css.map": "/Page_Mina2/static/css/main.ee91480c.css.map",
+    "main.850b81c8.js.map": "/Page_Mina2/static/js/main.850b81c8.js.map",
+    "453.fbc15508.chunk.js.map": "/Page_Mina2/static/js/453.fbc15508.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ee91480c.css",
+    "static/js/main.850b81c8.js"
+  ]
+}
