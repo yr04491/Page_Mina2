@@ -1,10 +1,13 @@
 import React, { forwardRef } from 'react';
 import './Officers.css';
+import ceoImage from '../../assets/images/CEO.png';  // パスは相対的に調整
+import cmoImage from '../../assets/images/CMO.png';  // ファイル名が変わっている可能性があります
+import cooImage from '../../assets/images/COO.png';  // ファイル名が変わっている可能性があります
 
 // GitHub Pages 用ベースパス設定
 const getBasePath = () => {
-  return process.env.NODE_ENV === 'production' 
-    ? '/Page_Mina'
+  return process.env.NODE_ENV === 'production'
+    ? '/Page_Mina2'
     : '';
 };
 
@@ -17,10 +20,10 @@ const Officers = forwardRef((props, ref) => {
           {/* CEO */}
           <div className="officer-item">
             <div className="officer-photo-container">
-              <img 
-                className="officer-photo" 
-                src={`${getBasePath()}/images/CEO2.png`} 
-                alt="田濃 一翔" 
+              <img
+                className="officer-photo"
+                src={ceoImage}
+                alt="田濃 一翔"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "https://placehold.jp/150x150.png";
@@ -45,10 +48,9 @@ const Officers = forwardRef((props, ref) => {
           {/* CMO */}
           <div className="officer-item">
             <div className="officer-photo-container">
-              <img 
-                className="officer-photo" 
-                src={`${getBasePath()}/images/CMO2.png`} 
-                alt="青木 愛一郎" 
+              <img
+                className="officer-photo"
+                src={cmoImage} alt="青木 愛一郎"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "https://placehold.jp/150x150.png";
@@ -73,10 +75,10 @@ const Officers = forwardRef((props, ref) => {
           {/* COO */}
           <div className="officer-item">
             <div className="officer-photo-container">
-              <img 
-                className="officer-photo" 
-                src={`${getBasePath()}/images/COO2.png`} 
-                alt="安倍 誠明" 
+              <img
+                className="officer-photo"
+                src={cooImage}
+                alt="安倍 誠明"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = "https://placehold.jp/150x150.png";
