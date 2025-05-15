@@ -48,50 +48,52 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  height: 40px; /* 固定高さを追加 */
+  align-items: center; /* 垂直方向の中央揃え */
 }
 
 .nav-menu li {
   margin: 0 15px;
+  display: flex;
+  align-items: center;
+  height: 100%; /* 親要素の高さいっぱいに */
 }
 
-.nav-menu a {
+.nav-menu > ul > li > a,
+.nav-menu > ul > li > div > a {
   color: #333;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
-  padding: 5px 0;
+  padding: 8px 20px; /* すべてのアイテムに同じパディングを適用 */
+  border-radius: 28px; /* すべてのアイテムに同じ角丸を適用 */
 }
 
-.nav-menu a:hover {
+.nav-menu > ul > li > a:hover,
+.nav-menu > ul > li > div > a:hover {
   color: #0088cc;
 }
 
-.nav-menu a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #0088cc;
-  transition: width 0.3s ease;
-}
-
-.nav-menu a:hover::after {
-  width: 100%;
+/* メインメニューのホバー下線を削除（赤丸デザインと競合するため） */
+.nav-menu > ul > li > a::after,
+.nav-menu > ul > li > div > a::after {
+  display: none;
 }
 
 /* ドロップダウン関連のスタイル */
 .nav-item {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link-with-dropdown {
   display: flex;
   align-items: center;
   position: relative;
+  height: 100%;
 }
 
 .dropdown-arrow {
@@ -112,19 +114,62 @@
   animation: fadeIn 0.2s;
 }
 
+/* ドロップダウンメニュー内のリンク - ボーダーアニメーション＋テキストカラーグラデーション */
 .dropdown-menu a {
   display: block;
   padding: 8px 20px;
   color: #333;
   text-decoration: none;
-  transition: all 0.2s ease;
-  border-left: 2px solid transparent;
+  position: relative;
+  border: none;
+  margin: 5px 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  z-index: 1;
 }
 
-.dropdown-menu a:hover {
-  background-color: #f5f5f5;
-  color: #0088cc;
+/* ボーダーアニメーション（四辺）部分 */
+.dropdown-menu a::before,
+.dropdown-menu a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  transition: 0.5s ease;
+  opacity: 0;
+}
+
+.dropdown-menu a::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid #0088cc;
   border-left: 2px solid #0088cc;
+}
+
+.dropdown-menu a::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid #0088cc;
+  border-right: 2px solid #0088cc;
+}
+
+/* ホバー時のスタイル - 両方のアニメーションを適用 */
+.dropdown-menu a:hover {
+  background-color: #f8f9fa;
+  /* テキストカラーグラデーション部分 */
+  background-image: linear-gradient(to right, #0088cc, #00c3ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* ボーダーアニメーションのホバー効果 */
+.dropdown-menu a:hover::before,
+.dropdown-menu a:hover::after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
 }
 
 @keyframes fadeIn {
@@ -188,11 +233,22 @@
 .nav-item a.active {
   background: #fa5c2a;
   color: #fff !important;
-  border-radius: 28px;
-  padding: 8px 20px;
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(250,92,42,0.08);
   transition: background 0.2s, color 0.2s;
+  /* パディングと角丸は通常状態と同じになるよう上に移動 */
+}
+
+/* Aboutメニュー内のアイテムのスタイル */
+.nav-about .nav-link-with-dropdown a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* メニュー間の余白を調整 */
+.nav-menu li + li {
+  margin-left: 10px;
 }
 
 /* レスポンシブ対応 */
@@ -221,17 +277,21 @@
   .nav-menu ul {
     flex-direction: column;
     align-items: flex-start;
+    height: auto;
   }
   
   .nav-menu li {
     margin: 15px 0;
     width: 100%;
+    height: auto;
   }
   
   .nav-menu a {
     font-size: 18px;
     display: block;
     width: 100%;
+    padding: 8px 0;
+    border-radius: 0;
   }
   
   .dropdown-menu {
@@ -248,6 +308,7 @@
   .dropdown-menu a {
     padding: 8px 15px;
     font-size: 16px;
+    margin: 2px 0;
   }
   
   .nav-item a.active {
@@ -256,5 +317,10 @@
     box-shadow: none;
     background: transparent;
     color: #fa5c2a !important;
+    -webkit-text-fill-color: #fa5c2a; /* モバイル表示の場合の上書き */
+  }
+  
+  .nav-menu li + li {
+    margin-left: 0;
   }
 }

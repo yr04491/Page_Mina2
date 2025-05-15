@@ -32,22 +32,12 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
-  // ナビゲーションリンクをクリックしたときの処理
+  // すべてのナビゲーションリンクのクリック処理を統一
   const handleNavClick = (section) => {
     setNavOpen(false);
     setAboutOpen(false);
     setActiveNav(section);
     scrollToSection(section);
-  };
-
-  // ドロップダウンメニュー内のリンクをクリックしたときの処理
-  const handleDropdownClick = (section) => {
-    setAboutOpen(false);
-    if (isMobile) setNavOpen(false);
-    setActiveNav('about');
-    requestAnimationFrame(() => {
-      scrollToSection(section);
-    });
   };
 
   // マウスオーバー時の処理
@@ -108,12 +98,12 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
                 </a>
                 {aboutOpen && (
                   <div className="dropdown-menu">
-                    <a href="#" onClick={() => handleDropdownClick('mission')}>Mission</a>
-                    <a href="#" onClick={() => handleDropdownClick('vision')}>Vision</a>
-                    <a href="#" onClick={() => handleDropdownClick('about-company')}>会社紹介</a>
-                    <a href="#" onClick={() => handleDropdownClick('company-info')}>会社概要</a>
-                    <a href="#" onClick={() => handleDropdownClick('officers')}>会社役員</a>
-                    <a href="#" onClick={() => handleDropdownClick('history')}>沿革</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('mission'); }}>Mission</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('vision'); }}>Vision</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('about-company'); }}>会社紹介</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('company-info'); }}>会社概要</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('officers'); }}>会社役員</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('history'); }}>沿革</a>
                   </div>
                 )}
               </div>
