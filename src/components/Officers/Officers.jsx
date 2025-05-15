@@ -19,7 +19,7 @@ const Officers = forwardRef((props, ref) => {
             <div className="officer-photo-container">
               <img 
                 className="officer-photo" 
-                src={`${getBasePath()}/images/CEO.png`} 
+                src={`${getBasePath()}/images/CEO2.png`} 
                 alt="田濃 一翔" 
                 onError={(e) => {
                   e.target.onerror = null;
@@ -47,7 +47,7 @@ const Officers = forwardRef((props, ref) => {
             <div className="officer-photo-container">
               <img 
                 className="officer-photo" 
-                src={`${getBasePath()}/images/CMO.png`} 
+                src={`${getBasePath()}/images/CMO2.png`} 
                 alt="青木 愛一郎" 
                 onError={(e) => {
                   e.target.onerror = null;
@@ -75,7 +75,7 @@ const Officers = forwardRef((props, ref) => {
             <div className="officer-photo-container">
               <img 
                 className="officer-photo" 
-                src={`${getBasePath()}/images/COO.png`} 
+                src={`${getBasePath()}/images/COO2.png`} 
                 alt="安倍 誠明" 
                 onError={(e) => {
                   e.target.onerror = null;

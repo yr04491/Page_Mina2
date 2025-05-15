@@ -52,7 +52,7 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
       <div className="navbar-container">
         {/* ロゴ */}
         <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          Fukui
+          Minakano
         </div>
         
         {/* モバイル用ハンバーガーアイコン */}
