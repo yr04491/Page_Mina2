@@ -6,6 +6,7 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
   const [navOpen, setNavOpen] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
   const [scrolled, setScrolled] = React.useState(false);
+  const [activeNav, setActiveNav] = React.useState(null);
 
   // ウィンドウサイズの変更を監視
   React.useEffect(() => {
@@ -35,6 +36,7 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
   const handleNavClick = (section) => {
     setNavOpen(false);
     setAboutOpen(false);
+    setActiveNav(section);
     scrollToSection(section);
   };
 
@@ -42,9 +44,30 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
   const handleDropdownClick = (section) => {
     setAboutOpen(false);
     if (isMobile) setNavOpen(false);
+    setActiveNav('about');
     requestAnimationFrame(() => {
       scrollToSection(section);
     });
+  };
+
+  // マウスオーバー時の処理
+  const handleMouseEnter = (navItem) => {
+    if (!isMobile) {
+      if (navItem === 'about') {
+        setAboutOpen(true);
+      }
+      setActiveNav(navItem);
+    }
+  };
+
+  // マウスアウト時の処理
+  const handleMouseLeave = (navItem) => {
+    if (!isMobile) {
+      if (navItem === 'about') {
+        setAboutOpen(false);
+      }
+      setActiveNav(null);
+    }
   };
 
   return (
@@ -68,18 +91,17 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
         {/* ナビゲーションメニュー */}
         <nav className={`nav-menu ${navOpen ? 'open' : ''}`}>
           <ul>
-            <li className="nav-item nav-about">
-              <div 
-                className="nav-link-with-dropdown"
-                onMouseEnter={() => !isMobile && setAboutOpen(true)}
-                onMouseLeave={() => !isMobile && setAboutOpen(false)}
-              >
+            <li className="nav-item nav-about"
+                onMouseEnter={() => handleMouseEnter('about')}
+                onMouseLeave={() => handleMouseLeave('about')}>
+              <div className="nav-link-with-dropdown">
                 <a 
                   href="#" 
-                  className={aboutOpen ? 'active' : ''}
+                  className={aboutOpen || activeNav === 'about' ? 'active' : ''}
                   onClick={(e) => {
                     e.preventDefault();
                     setAboutOpen(!aboutOpen);
+                    setActiveNav('about');
                   }}
                 >
                   About <span className="dropdown-arrow">▼</span>
@@ -96,10 +118,62 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
                 )}
               </div>
             </li>
-            <li><a href="#services" onClick={() => handleNavClick('services')}>Services</a></li>
-            <li><a href="#news" onClick={() => handleNavClick('news')}>News</a></li>
-            <li><a href="#recruit" onClick={() => handleNavClick('recruit')}>Recruit</a></li>
-            <li><a href="#contact" onClick={() => handleNavClick('contact')}>Contact</a></li>
+            <li className="nav-item nav-services"
+                onMouseEnter={() => handleMouseEnter('services')}
+                onMouseLeave={() => handleMouseLeave('services')}>
+              <a 
+                href="#services" 
+                className={activeNav === 'services' ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('services');
+                }}
+              >
+                Services
+              </a>
+            </li>
+            <li className="nav-item nav-news"
+                onMouseEnter={() => handleMouseEnter('news')}
+                onMouseLeave={() => handleMouseLeave('news')}>
+              <a 
+                href="#news" 
+                className={activeNav === 'news' ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('news');
+                }}
+              >
+                News
+              </a>
+            </li>
+            <li className="nav-item nav-recruit"
+                onMouseEnter={() => handleMouseEnter('recruit')}
+                onMouseLeave={() => handleMouseLeave('recruit')}>
+              <a 
+                href="#recruit" 
+                className={activeNav === 'recruit' ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('recruit');
+                }}
+              >
+                Recruit
+              </a>
+            </li>
+            <li className="nav-item nav-contact"
+                onMouseEnter={() => handleMouseEnter('contact')}
+                onMouseLeave={() => handleMouseLeave('contact')}>
+              <a 
+                href="#contact" 
+                className={activeNav === 'contact' ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('contact');
+                }}
+              >
+                Contact
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
