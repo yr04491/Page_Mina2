@@ -1,15 +1,16 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import './Header.css';
+import Navigation from './Navigation';
+import HamburgerMenu from './HamburgerMenu';
 
 const Header = forwardRef(({ scrollToSection }, ref) => {
-  const [aboutOpen, setAboutOpen] = React.useState(false);
-  const [navOpen, setNavOpen] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
-  const [scrolled, setScrolled] = React.useState(false);
-  const [activeNav, setActiveNav] = React.useState(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [activeNav, setActiveNav] = useState(null);
 
   // ウィンドウサイズの変更を監視
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
       if (window.innerWidth > 768) setNavOpen(false);
@@ -20,7 +21,7 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
   }, []);
 
   // スクロールの監視
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
       if (isScrolled !== scrolled) {
@@ -32,32 +33,19 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
-  // すべてのナビゲーションリンクのクリック処理を統一
-  const handleNavClick = (section) => {
+  // ナビゲーションの状態を管理する関数
+  const toggleNavOpen = () => {
+    setNavOpen(!navOpen);
+  };
+
+  const closeNav = () => {
     setNavOpen(false);
-    setAboutOpen(false);
+  };
+
+  const handleNavClick = (section) => {
     setActiveNav(section);
+    closeNav();
     scrollToSection(section);
-  };
-
-  // マウスオーバー時の処理
-  const handleMouseEnter = (navItem) => {
-    if (!isMobile) {
-      if (navItem === 'about') {
-        setAboutOpen(true);
-      }
-      setActiveNav(navItem);
-    }
-  };
-
-  // マウスアウト時の処理
-  const handleMouseLeave = (navItem) => {
-    if (!isMobile) {
-      if (navItem === 'about') {
-        setAboutOpen(false);
-      }
-      setActiveNav(null);
-    }
   };
 
   return (
@@ -69,103 +57,16 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
         </div>
         
         {/* モバイル用ハンバーガーアイコン */}
-        <div 
-          className={`hamburger ${navOpen ? 'open' : ''}`} 
-          onClick={() => setNavOpen(!navOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <HamburgerMenu isOpen={navOpen} toggleOpen={toggleNavOpen} />
         
         {/* ナビゲーションメニュー */}
-        <nav className={`nav-menu ${navOpen ? 'open' : ''}`}>
-          <ul>
-            <li className="nav-item nav-about"
-                onMouseEnter={() => handleMouseEnter('about')}
-                onMouseLeave={() => handleMouseLeave('about')}>
-              <div className="nav-link-with-dropdown">
-                <a 
-                  href="#" 
-                  className={aboutOpen || activeNav === 'about' ? 'active' : ''}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setAboutOpen(!aboutOpen);
-                    setActiveNav('about');
-                  }}
-                >
-                  About <span className="dropdown-arrow">▼</span>
-                </a>
-                {aboutOpen && (
-                  <div className="dropdown-menu">
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('mission'); }}>Mission</a>
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('vision'); }}>Vision</a>
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('about-company'); }}>会社紹介</a>
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('company-info'); }}>会社概要</a>
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('officers'); }}>会社役員</a>
-                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('history'); }}>沿革</a>
-                  </div>
-                )}
-              </div>
-            </li>
-            <li className="nav-item nav-services"
-                onMouseEnter={() => handleMouseEnter('services')}
-                onMouseLeave={() => handleMouseLeave('services')}>
-              <a 
-                href="#services" 
-                className={activeNav === 'services' ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('services');
-                }}
-              >
-                Services
-              </a>
-            </li>
-            <li className="nav-item nav-news"
-                onMouseEnter={() => handleMouseEnter('news')}
-                onMouseLeave={() => handleMouseLeave('news')}>
-              <a 
-                href="#news" 
-                className={activeNav === 'news' ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('news');
-                }}
-              >
-                News
-              </a>
-            </li>
-            <li className="nav-item nav-recruit"
-                onMouseEnter={() => handleMouseEnter('recruit')}
-                onMouseLeave={() => handleMouseLeave('recruit')}>
-              <a 
-                href="#recruit" 
-                className={activeNav === 'recruit' ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('recruit');
-                }}
-              >
-                Recruit
-              </a>
-            </li>
-            <li className="nav-item nav-contact"
-                onMouseEnter={() => handleMouseEnter('contact')}
-                onMouseLeave={() => handleMouseLeave('contact')}>
-              <a 
-                href="#contact" 
-                className={activeNav === 'contact' ? 'active' : ''}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('contact');
-                }}
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <Navigation 
+          isOpen={navOpen}
+          isMobile={isMobile}
+          activeNav={activeNav}
+          setActiveNav={setActiveNav}
+          handleNavClick={handleNavClick}
+        />
       </div>
     </header>
   );
