@@ -8,17 +8,25 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
   const [navOpen, setNavOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [activeNav, setActiveNav] = useState(null);
+  const [expandedMenus, setExpandedMenus] = useState({
+    about: false,
+    services: false,
+    news: false,
+    recruit: false,
+    contact: false
+  });
 
   // ウィンドウサイズの変更を監視
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth > 768) setNavOpen(false);
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      if (!mobile && navOpen) setNavOpen(false);
     };
     
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [navOpen]);
 
   // スクロールの監視
   useEffect(() => {
@@ -40,6 +48,15 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
 
   const closeNav = () => {
     setNavOpen(false);
+  };
+
+  // メニュー項目の展開/収納を切り替える
+  const toggleMenu = (menu) => {
+    setExpandedMenus(prev => ({
+      ...prev,
+      [menu]: !prev[menu]
+    }));
+    setActiveNav(expandedMenus[menu] ? null : menu);
   };
 
   const handleNavClick = (section) => {
@@ -66,6 +83,8 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
           activeNav={activeNav}
           setActiveNav={setActiveNav}
           handleNavClick={handleNavClick}
+          expandedMenus={expandedMenus}
+          toggleMenu={toggleMenu}
         />
       </div>
     </header>

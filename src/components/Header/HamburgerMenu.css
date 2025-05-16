@@ -44,9 +44,30 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 
+/* モバイルメニューのオーバーレイ */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.mobile-menu-overlay.open {
+  display: block;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+  }
+  
+  /* ハンバーガーメニューが開いた時の背景スクロール防止 */
+  body.menu-open {
+    overflow: hidden;
   }
 }

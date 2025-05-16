@@ -1,50 +1,50 @@
 import React, { useState } from 'react';
 import './Navigation.css';
 
-const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick }) => {
-  const [aboutOpen, setAboutOpen] = useState(false);
-
-  // マウスオーバー時の処理
+const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick, expandedMenus, toggleMenu }) => {
+  // マウスオーバー時の処理（デスクトップ用）
   const handleMouseEnter = (navItem) => {
     if (!isMobile) {
       if (navItem === 'about') {
-        setAboutOpen(true);
+        toggleMenu('about');
       }
       setActiveNav(navItem);
     }
   };
 
-  // マウスアウト時の処理
+  // マウスアウト時の処理（デスクトップ用）
   const handleMouseLeave = (navItem) => {
     if (!isMobile) {
       if (navItem === 'about') {
-        setAboutOpen(false);
+        toggleMenu('about');
       }
       setActiveNav(null);
     }
   };
 
+  // Aboutドロップダウンの切り替え
   const toggleAboutDropdown = (e) => {
     e.preventDefault();
-    setAboutOpen(!aboutOpen);
-    setActiveNav('about');
+    toggleMenu('about');
   };
 
   return (
     <nav className={`nav-menu ${isOpen ? 'open' : ''}`}>
       <ul>
-        <li className="nav-item nav-about"
-            onMouseEnter={() => handleMouseEnter('about')}
-            onMouseLeave={() => handleMouseLeave('about')}>
+        <li 
+          className="nav-item nav-about"
+          onMouseEnter={() => handleMouseEnter('about')}
+          onMouseLeave={() => handleMouseLeave('about')}
+        >
           <div className="nav-link-with-dropdown">
             <a 
               href="#" 
-              className={aboutOpen || activeNav === 'about' ? 'active' : ''}
+              className={expandedMenus.about || activeNav === 'about' ? 'active' : ''}
               onClick={toggleAboutDropdown}
             >
               About <span className="dropdown-arrow">▼</span>
             </a>
-            {aboutOpen && (
+            {expandedMenus.about && (
               <div className="dropdown-menu">
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('mission'); }}>Mission</a>
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('vision'); }}>Vision</a>
@@ -56,9 +56,11 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick 
             )}
           </div>
         </li>
-        <li className="nav-item nav-services"
-            onMouseEnter={() => handleMouseEnter('services')}
-            onMouseLeave={() => handleMouseLeave('services')}>
+        <li 
+          className="nav-item nav-services"
+          onMouseEnter={() => handleMouseEnter('services')}
+          onMouseLeave={() => handleMouseLeave('services')}
+        >
           <a 
             href="#services" 
             className={activeNav === 'services' ? 'active' : ''}
@@ -70,9 +72,11 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick 
             Services
           </a>
         </li>
-        <li className="nav-item nav-news"
-            onMouseEnter={() => handleMouseEnter('news')}
-            onMouseLeave={() => handleMouseLeave('news')}>
+        <li 
+          className="nav-item nav-news"
+          onMouseEnter={() => handleMouseEnter('news')}
+          onMouseLeave={() => handleMouseLeave('news')}
+        >
           <a 
             href="#news" 
             className={activeNav === 'news' ? 'active' : ''}
@@ -84,9 +88,11 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick 
             News
           </a>
         </li>
-        <li className="nav-item nav-recruit"
-            onMouseEnter={() => handleMouseEnter('recruit')}
-            onMouseLeave={() => handleMouseLeave('recruit')}>
+        <li 
+          className="nav-item nav-recruit"
+          onMouseEnter={() => handleMouseEnter('recruit')}
+          onMouseLeave={() => handleMouseLeave('recruit')}
+        >
           <a 
             href="#recruit" 
             className={activeNav === 'recruit' ? 'active' : ''}
@@ -98,9 +104,11 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick 
             Recruit
           </a>
         </li>
-        <li className="nav-item nav-contact"
-            onMouseEnter={() => handleMouseEnter('contact')}
-            onMouseLeave={() => handleMouseLeave('contact')}>
+        <li 
+          className="nav-item nav-contact"
+          onMouseEnter={() => handleMouseEnter('contact')}
+          onMouseLeave={() => handleMouseLeave('contact')}
+        >
           <a 
             href="#contact" 
             className={activeNav === 'contact' ? 'active' : ''}
