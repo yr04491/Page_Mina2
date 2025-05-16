@@ -1,4 +1,4 @@
-/* src/components/Member/Staff.css*/
+/* src/components/Member/Staff.css */
 .staff-section {
   display: none;
 }
@@ -49,14 +49,28 @@
 
 .staff-photo {
   margin-bottom: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .staff-photo img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  border-radius: 50%;
   border: 3px solid white;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+/* ホバーエフェクト時のアニメーション */
+.staff-photo:hover img {
+  transform: scale(1.05);
 }
 
 .staff-info h4 {
@@ -85,6 +99,13 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 画像切り替えアニメーション */
+@keyframes imageSwap {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* レスポンシブ対応 */
