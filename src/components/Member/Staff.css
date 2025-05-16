@@ -1,0 +1,100 @@
+/* src/components/Member/Staff.css*/
+.staff-section {
+  display: none;
+}
+
+.staff-section.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.staff-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.staff-content {
+  text-align: center;
+}
+
+.staff-content > p {
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.staff-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.staff-photo {
+  margin-bottom: 15px;
+}
+
+.staff-photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+.staff-info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.staff-position {
+  color: #fa5c2a;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.staff-description {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .staff-section h3 {
+    font-size: 1.5rem;
+  }
+}

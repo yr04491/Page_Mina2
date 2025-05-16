@@ -1,0 +1,101 @@
+/* src/components/Member/Character.css*/
+.character-section {
+  display: none;
+}
+
+.character-section.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.character-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.character-content {
+  text-align: center;
+}
+
+.character-content > p {
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.character-card {
+  background-color: #f5f9ff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.character-image {
+  margin-bottom: 20px;
+}
+
+.character-image img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.character-info h4 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.character-description {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .character-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .character-section h3 {
+    font-size: 1.5rem;
+  }
+  
+  .character-image img {
+    width: 150px;
+    height: 150px;
+  }
+}
