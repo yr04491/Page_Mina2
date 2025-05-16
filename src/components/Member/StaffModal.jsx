@@ -12,7 +12,7 @@ const StaffModal = ({ staff, onClose }) => {
         
         <div className="staff-modal-inner">
           <div className="staff-modal-image">
-            <img src={staff.image} alt={staff.name} onError={(e) => {
+            <img src={staff.hoverImage} alt={staff.name} onError={(e) => {
               e.target.onerror = null;
               e.target.src = "https://placehold.jp/300x300.png";
             }} />

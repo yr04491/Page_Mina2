@@ -1,32 +1,20 @@
 // src/data/staffData.js
 // スタッフデータを管理する専用ファイル
 // 今後はこのファイルを編集するだけでスタッフの追加・変更・削除が可能
+import CEO from '../assets/images/CEO.png';
+import CEO2 from '../assets/images/TANO.png';
+
 
 const staffData = [
-  {
+ {
     id: 1,
-    name: '山田 太郎',
-    romaji: 'YAMADA Taro',
-    position: 'エンジニア',
-    description: 'AIと教育の融合に取り組んでいます。',
-    longDescription: '森永乳業に新卒入社し、医療・介護施設をターゲットとした医療・介護食の営業に従事。続いてレシピサイトを運営するITベンチャーに入社し、社員向け未来のフェーリーフェーズにおいて戦略開拓、営業手法の確立に注力する。その後コーポレートウェルネス領域におけるエンタープライズ企業向けBPaaS事業のアカウントセールス・カスタマーサクセス部門/事業開発の責任者を歴任。2023年12月に株式会社Minakonoに入社し、現在はカスタマーサクセス部門を管掌している。',
-    image: '/assets/images/RYO.png',
-    hoverImage: '/assets/images/RYO_2.png',
-    socialLinks: {
-      twitter: 'https://twitter.com/',
-      linkedin: 'https://linkedin.com/',
-      facebook: 'https://facebook.com/'
-    },
-    relatedArticles: [
-      {
-        title: '入社エントリ | 不惑を目前に熱狂を求めてMinakonoに入社しました',
-        url: '#'
-      },
-      {
-        title: '那須での暮らしをベースに自律的に生きる【チャレンジな転職ビフォーアフター 〜Minakono 赤井北斗さん編〜】',
-        url: '#'
-      }
-    ]
+    name: '田濃 一翔',
+    romaji: 'TANO Kazuto',
+    position: 'しゃちょー',
+    description: '起業しました！',
+    longDescription: '頑張ってます！',
+    image: CEO,
+    hoverImage: CEO2
   },
   {
     id: 2,
