@@ -28,7 +28,6 @@
 
 .staff-grid {
   display: grid;
-  /* グリッドテンプレートを変更して、画面サイズに応じて柔軟に対応 */
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 25px;
   margin-top: 30px;
@@ -44,11 +43,18 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  cursor: pointer; /* カーソルをポインターに変更 */
 }
 
 .staff-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* クリック時の効果を追加 */
+.staff-card:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
 }
 
 .staff-photo {
@@ -98,8 +104,13 @@
   color: #555;
   font-size: 0.9rem;
   line-height: 1.5;
-  /* 説明文が長さ異なる場合でも均一に見えるように */
   flex: 1;
+}
+
+/* アクセシビリティ向上のためのフォーカススタイル */
+.staff-card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.3), 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes fadeIn {
