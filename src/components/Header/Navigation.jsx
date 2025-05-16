@@ -6,13 +6,8 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
   // マウスオーバー時の処理（デスクトップ用）
   const handleMouseEnter = (navItem) => {
     if (!isMobile) {
-<<<<<<< HEAD
       if (navItem === 'about' || navItem === 'member') {
         toggleMenu(navItem);
-=======
-      if (navItem === 'about') {
-        toggleMenu('about');
->>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
       }
       setActiveNav(navItem);
     }
@@ -21,38 +16,23 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
   // マウスアウト時の処理（デスクトップ用）
   const handleMouseLeave = (navItem) => {
     if (!isMobile) {
-<<<<<<< HEAD
       if (navItem === 'about' || navItem === 'member') {
         toggleMenu(navItem);
-=======
-      if (navItem === 'about') {
-        toggleMenu('about');
->>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
       }
       setActiveNav(null);
     }
   };
 
-<<<<<<< HEAD
   // ドロップダウンの切り替え
   const toggleDropdown = (e, menu) => {
     e.preventDefault();
     toggleMenu(menu);
-=======
-  // Aboutドロップダウンの切り替え
-  const toggleAboutDropdown = (e) => {
-    e.preventDefault();
-    toggleMenu('about');
->>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
   };
 
   return (
     <nav className={`nav-menu ${isOpen ? 'open' : ''}`}>
       <ul>
-<<<<<<< HEAD
         {/* About Menu */}
-=======
->>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
         <li 
           className="nav-item nav-about"
           onMouseEnter={() => handleMouseEnter('about')}
@@ -62,11 +42,7 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
             <a 
               href="#" 
               className={expandedMenus.about || activeNav === 'about' ? 'active' : ''}
-<<<<<<< HEAD
               onClick={(e) => toggleDropdown(e, 'about')}
-=======
-              onClick={toggleAboutDropdown}
->>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
             >
               About <span className="dropdown-arrow">▼</span>
             </a>
@@ -82,11 +58,8 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
             )}
           </div>
         </li>
-<<<<<<< HEAD
 
         {/* Services Menu */}
-=======
->>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
         <li 
           className="nav-item nav-services"
           onMouseEnter={() => handleMouseEnter('services')}
@@ -103,7 +76,6 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
             Services
           </a>
         </li>
-<<<<<<< HEAD
 
         {/* Member Menu - New dropdown menu */}
         <li 
@@ -129,8 +101,6 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
         </li>
 
         {/* News Menu */}
-=======
->>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
         <li 
           className="nav-item nav-news"
           onMouseEnter={() => handleMouseEnter('news')}
@@ -147,27 +117,8 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
             News
           </a>
         </li>
-<<<<<<< HEAD
 
         {/* Contactメニュー */}
-=======
-        <li 
-          className="nav-item nav-recruit"
-          onMouseEnter={() => handleMouseEnter('recruit')}
-          onMouseLeave={() => handleMouseLeave('recruit')}
-        >
-          <a 
-            href="#recruit" 
-            className={activeNav === 'recruit' ? 'active' : ''}
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('recruit');
-            }}
-          >
-            Recruit
-          </a>
-        </li>
->>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
         <li 
           className="nav-item nav-contact"
           onMouseEnter={() => handleMouseEnter('contact')}
