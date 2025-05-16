@@ -1,34 +1,14 @@
 // src/components/Member/Staff.jsx
 import React, { forwardRef, useState } from 'react';
 import './Staff.css';
-import RYO from '../../assets/images/RYO.png';
-import RYO_2 from '../../assets/images/COO.png';
+// スタッフデータを外部ファイルからインポート
+import staffData from '../../data/staffData';
 
 const Staff = forwardRef((props, ref) => {
   const { isActive } = props;
   
   // 各スタッフ画像のホバー状態を管理
   const [hoveredStaff, setHoveredStaff] = useState(null);
-  
-  // スタッフデータ
-  const staffMembers = [
-    {
-      id: 1,
-      name: '山田 太郎',
-      position: 'エンジニア',
-      description: 'AIと教育の融合に取り組んでいます。',
-      image: RYO,
-      hoverImage: RYO_2
-    },
-    {
-      id: 2,
-      name: '佐藤 花子',
-      position: '教育コンサルタント',
-      description: '教育現場での経験を活かし、学習システムの設計に携わっています。',
-      image: 'https://placehold.jp/150x150.png',
-      hoverImage: 'https://placehold.jp/3d4070/ffffff/150x150.png'
-    }
-  ];
   
   return (
     <div 
@@ -41,7 +21,7 @@ const Staff = forwardRef((props, ref) => {
         <p>当社のスタッフは、さまざまな専門知識と経験を持つプロフェッショナルで構成されています。教育とテクノロジーへの情熱を共有し、子どもたちの可能性を最大限に引き出すために日々努力しています。</p>
         
         <div className="staff-grid">
-          {staffMembers.map(staff => (
+          {staffData.map(staff => (
             <div className="staff-card" key={staff.id}>
               <div 
                 className="staff-photo"
