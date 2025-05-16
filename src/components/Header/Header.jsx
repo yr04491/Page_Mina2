@@ -12,10 +12,16 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
   const [expandedMenus, setExpandedMenus] = useState({
     about: false,
     services: false,
+<<<<<<< HEAD
     member: false,
     news: false,
     contact: false
     // recruit は削除しました
+=======
+    news: false,
+    recruit: false,
+    contact: false
+>>>>>>> 647099fc02016c77755873b58621ce50e7112f3a
   });
 
   // ウィンドウサイズの変更を監視
