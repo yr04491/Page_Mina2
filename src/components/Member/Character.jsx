@@ -11,7 +11,7 @@ const Character = forwardRef((props, ref) => {
       id="character" 
       className={`character-section sub-section ${isActive ? 'active' : ''}`}
     >
-      <h3>Our Characters</h3>
+      <h3>Our Professional</h3>
       <div className="character-content">
         <p>当社のキャラクターたちは、子どもたちの学びをサポートするために生まれました。親しみやすいデザインと個性豊かな特徴で、学習体験をより楽しく、より効果的にします。</p>
         

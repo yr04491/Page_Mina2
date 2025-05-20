@@ -122,11 +122,11 @@ const CompanyPage = () => {
     <div className="company-page">
       <Header ref={headerRef} scrollToSection={scrollToSection} />
       <Hero />
+      <CompanyInfo ref={companyInfoRef} />
       <Mission ref={missionRef} />
       <Vision ref={visionRef} />
       <AboutCompany ref={aboutCompanyRef} />
-      <CompanyInfo ref={companyInfoRef} />
-      <Officers ref={officersRef} />
+      {/*<Officers ref={officersRef} />*/}
       <History ref={historyRef} />
       <Services ref={servicesRef} />
       <Member 

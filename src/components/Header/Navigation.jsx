@@ -33,14 +33,14 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
     <nav className={`nav-menu ${isOpen ? 'open' : ''}`}>
       <ul>
         {/* About Menu */}
-        <li 
+        <li
           className="nav-item nav-about"
           onMouseEnter={() => handleMouseEnter('about')}
           onMouseLeave={() => handleMouseLeave('about')}
         >
           <div className="nav-link-with-dropdown">
-            <a 
-              href="#" 
+            <a
+              href="#"
               className={expandedMenus.about || activeNav === 'about' ? 'active' : ''}
               onClick={(e) => toggleDropdown(e, 'about')}
             >
@@ -48,11 +48,11 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
             </a>
             {expandedMenus.about && (
               <div className="dropdown-menu">
+                <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('company-info'); }}>会社概要</a>
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('mission'); }}>Mission</a>
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('vision'); }}>Vision</a>
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('about-company'); }}>会社紹介</a>
-                <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('company-info'); }}>会社概要</a>
-                <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('officers'); }}>会社役員</a>
+                {/*<a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('officers'); }}>会社役員</a>*/}
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('history'); }}>沿革</a>
               </div>
             )}
@@ -60,13 +60,13 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
         </li>
 
         {/* Services Menu */}
-        <li 
+        <li
           className="nav-item nav-services"
           onMouseEnter={() => handleMouseEnter('services')}
           onMouseLeave={() => handleMouseLeave('services')}
         >
-          <a 
-            href="#services" 
+          <a
+            href="#services"
             className={activeNav === 'services' ? 'active' : ''}
             onClick={(e) => {
               e.preventDefault();
@@ -78,14 +78,14 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
         </li>
 
         {/* Member Menu - New dropdown menu */}
-        <li 
+        <li
           className="nav-item nav-member"
           onMouseEnter={() => handleMouseEnter('member')}
           onMouseLeave={() => handleMouseLeave('member')}
         >
           <div className="nav-link-with-dropdown">
-            <a 
-              href="#" 
+            <a
+              href="#"
               className={expandedMenus.member || activeNav === 'member' ? 'active' : ''}
               onClick={(e) => toggleDropdown(e, 'member')}
             >
@@ -93,21 +93,21 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
             </a>
             {expandedMenus.member && (
               <div className="dropdown-menu">
-                <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('member-staff'); }}>Staff</a>
-                <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('member-character'); }}>Character</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('member-staff'); }}>Management</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('member-character'); }}>Professional</a>
               </div>
             )}
           </div>
         </li>
 
         {/* News Menu */}
-        <li 
+        <li
           className="nav-item nav-news"
           onMouseEnter={() => handleMouseEnter('news')}
           onMouseLeave={() => handleMouseLeave('news')}
         >
-          <a 
-            href="#news" 
+          <a
+            href="#news"
             className={activeNav === 'news' ? 'active' : ''}
             onClick={(e) => {
               e.preventDefault();
@@ -119,13 +119,13 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
         </li>
 
         {/* Contactメニュー */}
-        <li 
+        <li
           className="nav-item nav-contact"
           onMouseEnter={() => handleMouseEnter('contact')}
           onMouseLeave={() => handleMouseLeave('contact')}
         >
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className={activeNav === 'contact' ? 'active' : ''}
             onClick={(e) => {
               e.preventDefault();

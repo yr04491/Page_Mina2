@@ -6,7 +6,7 @@ import CEO2 from '../assets/images/TANO.png';
 
 
 const staffData = [
- {
+  {
     id: 1,
     name: '田濃 一翔',
     romaji: 'TANO Kazuto',
@@ -18,81 +18,26 @@ const staffData = [
   },
   {
     id: 2,
-    name: '佐藤 花子',
-    romaji: 'SATO Hanako',
-    position: '教育コンサルタント',
-    description: '教育現場での経験を活かし、学習システムの設計に携わっています。',
-    longDescription: '10年間の学校教育現場での経験を持ち、特に特別支援教育に携わってきました。子どもたち一人ひとりの特性や学習スタイルを理解し、最適な学習環境を設計することを得意としています。Minakonoでは、AIを活用した個別最適化学習プラットフォームの開発に携わり、すべての子どもたちが自分のペースで学べる環境づくりを推進しています。',
-    image: 'https://placehold.jp/150x150.png',
-    hoverImage: 'https://placehold.jp/3d4070/ffffff/150x150.png',
-    socialLinks: {
-      twitter: 'https://twitter.com/',
-      linkedin: 'https://linkedin.com/'
-    },
-    relatedArticles: [
-      {
-        title: '教育とテクノロジーの融合 - これからの学びを考える',
-        url: '#'
-      }
-    ]
-  },
-  {
-    id: 3,
-    name: '鈴木 一郎',
-    romaji: 'SUZUKI Ichiro',
-    position: 'UI/UXデザイナー',
-    description: '子どもたちが直感的に使えるインターフェースをデザインしています。',
-    longDescription: 'ユーザー中心設計の理念に基づき、特に子どもたちが直感的に操作できるインターフェースデザインを専門としています。これまで多数の教育アプリや子ども向けデジタルコンテンツのデザインに携わってきました。Minakonoでは、年齢や学習スタイルの異なる子どもたちが等しく利用できる、アクセシブルで魅力的なUI/UXの開発をリードしています。',
-    image: 'https://placehold.jp/7a91c7/ffffff/150x150.png',
-    hoverImage: 'https://placehold.jp/4267b2/ffffff/150x150.png',
-    socialLinks: {
-      twitter: 'https://twitter.com/',
-      facebook: 'https://facebook.com/'
-    }
-  },
-  {
-    id: 4,
-    name: '高橋 結衣',
-    romaji: 'TAKAHASHI Yui',
-    position: 'コンテンツディレクター',
-    description: '子どもたちが楽しく学べる教育コンテンツを企画・開発しています。',
-    longDescription: '教育出版社での勤務経験を持ち、小・中学生向けの教材開発に10年以上携わってきました。子どもたちの好奇心を刺激し、自ら学ぶ意欲を引き出すコンテンツ作りを得意としています。Minakonoでは、AIと教育コンテンツを融合させた新しい学習体験の創造に取り組んでいます。',
-    image: 'https://placehold.jp/e57b7b/ffffff/150x150.png',
-    hoverImage: 'https://placehold.jp/c54545/ffffff/150x150.png',
-    socialLinks: {
-      linkedin: 'https://linkedin.com/'
-    }
-  },
-  {
-    id: 5,
-    name: '田中 誠',
-    romaji: 'TANAKA Makoto',
-    position: 'バックエンドエンジニア',
-    description: '安定したシステム基盤の構築と最適化に取り組んでいます。',
-    longDescription: '大規模Webサービスのバックエンド開発経験を持ち、特にスケーラブルなシステム設計とパフォーマンス最適化を専門としています。Minakonoでは、多数の子どもたちが同時に利用しても安定して動作する学習プラットフォームの技術基盤を担当し、安全性と拡張性を両立したシステム構築に力を注いでいます。',
-    image: 'https://placehold.jp/79b06e/ffffff/150x150.png',
-    hoverImage: 'https://placehold.jp/4d8c3f/ffffff/150x150.png',
-    socialLinks: {
-      twitter: 'https://twitter.com/',
-      linkedin: 'https://linkedin.com/'
-    }
-  },
-  {
-    id: 6,
-    name: '中村 優',
-    romaji: 'NAKAMURA Yu',
-    position: 'データサイエンティスト',
-    description: '学習データの分析と個別最適化アルゴリズムの開発を担当しています。',
-    longDescription: '機械学習と教育工学の知見を活かし、子どもたちの学習パターンを分析して最適な学習体験を提供するアルゴリズム開発に従事しています。Minakonoでは、一人ひとりの学習速度や理解度に合わせてコンテンツを最適化する推薦システムの構築を担当し、真の意味で個別最適化された学びの実現に取り組んでいます。',
+    name: '⻘⽊ 愛⼀郎',
+    romaji: 'AOKI Aiitiro',
+    position: 'CMO',
+    description: '起業しました！',
+    longDescription: '頑張ってます！',
     image: 'https://placehold.jp/9179b0/ffffff/150x150.png',
     hoverImage: 'https://placehold.jp/634d8c/ffffff/150x150.png',
-    socialLinks: {
-      twitter: 'https://twitter.com/',
-      linkedin: 'https://linkedin.com/',
-      facebook: 'https://facebook.com/'
-    }
-  }
+  },
+   {
+    id: 3,
+    name: '安倍 誠明',
+    romaji: 'ABE Tomoaki',
+    position: 'COO',
+    description: '起業しました！',
+    longDescription: '頑張ってます！',
+    image: 'https://placehold.jp/9179b0/ffffff/150x150.png',
+    hoverImage: 'https://placehold.jp/634d8c/ffffff/150x150.png',
+  },
   
+
   // 新しいスタッフを追加する場合は、以下のテンプレートを使用してください
   /*
   {

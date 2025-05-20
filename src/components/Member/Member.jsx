@@ -13,28 +13,28 @@ const Member = forwardRef((props, ref) => {
         <h2>Member</h2>
         <div className="section-content">
           <div className="member-tabs">
-            <button 
+            <button
               className={`member-tab ${activeSubSection === 'staff' ? 'active' : ''}`}
               onClick={() => scrollToSubSection('staff')}
             >
-              Staff
+              Management
             </button>
-            <button 
+            <button
               className={`member-tab ${activeSubSection === 'character' ? 'active' : ''}`}
               onClick={() => scrollToSubSection('character')}
             >
-              Character
+              Professional
             </button>
           </div>
-          
+
           <div className="member-content">
-            <Staff 
-              ref={props.staffRef} 
-              isActive={activeSubSection === 'staff'} 
+            <Staff
+              ref={props.staffRef}
+              isActive={activeSubSection === 'staff'}
             />
-            <Character 
-              ref={props.characterRef} 
-              isActive={activeSubSection === 'character'} 
+            <Character
+              ref={props.characterRef}
+              isActive={activeSubSection === 'character'}
             />
           </div>
         </div>

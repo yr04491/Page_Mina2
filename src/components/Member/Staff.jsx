@@ -31,9 +31,9 @@ const Staff = forwardRef((props, ref) => {
         id="staff" 
         className={`staff-section sub-section ${isActive ? 'active' : ''}`}
       >
-        <h3>Our Staff</h3>
+        <h3>Our Management</h3>
         <div className="staff-content">
-          <p>当社のスタッフは、さまざまな専門知識と経験を持つプロフェッショナルで構成されています。教育とテクノロジーへの情熱を共有し、子どもたちの可能性を最大限に引き出すために日々努力しています。</p>
+          <p>当社のスタッフは努力しています。</p>
           
           <div className="staff-grid">
             {staffData.map(staff => (
