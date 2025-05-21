@@ -26,7 +26,7 @@ const staffData = [
     image: 'https://placehold.jp/9179b0/ffffff/150x150.png',
     hoverImage: 'https://placehold.jp/634d8c/ffffff/150x150.png',
   },
-   {
+  {
     id: 3,
     name: '安倍 誠明',
     romaji: 'ABE Tomoaki',
@@ -36,7 +36,7 @@ const staffData = [
     image: 'https://placehold.jp/9179b0/ffffff/150x150.png',
     hoverImage: 'https://placehold.jp/634d8c/ffffff/150x150.png',
   },
-  
+
 
   // 新しいスタッフを追加する場合は、以下のテンプレートを使用してください
   /*
