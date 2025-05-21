@@ -9,37 +9,42 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 40px; /* 固定高さを追加 */
-  align-items: center; /* 垂直方向の中央揃え */
+  height: 40px;
+  /* 固定高さを追加 */
+  align-items: center;
+  /* 垂直方向の中央揃え */
 }
 
 .nav-menu li {
   margin: 0 15px;
   display: flex;
   align-items: center;
-  height: 100%; /* 親要素の高さいっぱいに */
+  height: 100%;
+  /* 親要素の高さいっぱいに */
 }
 
-.nav-menu > ul > li > a,
-.nav-menu > ul > li > div > a {
+.nav-menu>ul>li>a,
+.nav-menu>ul>li>div>a {
   color: #333;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
-  padding: 8px 20px; /* すべてのアイテムに同じパディングを適用 */
-  border-radius: 28px; /* すべてのアイテムに同じ角丸を適用 */
+  padding: 8px 20px;
+  /* すべてのアイテムに同じパディングを適用 */
+  border-radius: 28px;
+  /* すべてのアイテムに同じ角丸を適用 */
 }
 
-.nav-menu > ul > li > a:hover,
-.nav-menu > ul > li > div > a:hover {
+.nav-menu>ul>li>a:hover,
+.nav-menu>ul>li>div>a:hover {
   color: #0088cc;
 }
 
 /* メインメニューのホバー下線を削除（赤丸デザインと競合するため） */
-.nav-menu > ul > li > a::after,
-.nav-menu > ul > li > div > a::after {
+.nav-menu>ul>li>a::after,
+.nav-menu>ul>li>div>a::after {
   display: none;
 }
 
@@ -52,10 +57,12 @@
 
 .nav-link-with-dropdown {
   display: flex;
-  flex-direction: column; /* 縦方向に並べる */
+  flex-direction: column;
+  /* 縦方向に並べる */
   align-items: center;
   position: relative;
-  width: 100%; /* 幅を100%に */
+  width: 100%;
+  /* 幅を100%に */
 }
 
 .dropdown-arrow {
@@ -66,9 +73,12 @@
 /* ドロップダウンメニューを下方向に表示する */
 .dropdown-menu {
   position: absolute;
-  top: 100%; /* 親要素の下端から開始 */
-  left: 50%; /* 中央揃え用 */
-  transform: translateX(-50%); /* 水平方向の中央揃え */
+  top: 100%;
+  /* 親要素の下端から開始 */
+  left: 50%;
+  /* 中央揃え用 */
+  transform: translateX(-50%);
+  /* 水平方向の中央揃え */
   min-width: 220px;
   background-color: white;
   border-radius: 8px;
@@ -76,7 +86,8 @@
   padding: 10px 0;
   z-index: 100;
   animation: fadeInDown 0.2s;
-  margin-top: 0px; /* 親メニューとの間隔 */
+  margin-top: 0px;
+  /* 親メニューとの間隔 */
 }
 
 /* 下方向にフェードインするアニメーション */
@@ -85,6 +96,7 @@
     opacity: 0;
     transform: translate(-50%, -10px);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -154,7 +166,7 @@
   background: #fa5c2a;
   color: #fff !important;
   font-weight: bold;
-  box-shadow: 0 2px 8px rgba(250,92,42,0.08);
+  box-shadow: 0 2px 8px rgba(250, 92, 42, 0.08);
   transition: background 0.2s, color 0.2s;
 }
 
@@ -166,7 +178,7 @@
 }
 
 /* メニュー間の余白を調整 */
-.nav-menu li + li {
+.nav-menu li+li {
   margin-left: 10px;
 }
 
@@ -179,67 +191,120 @@
     width: 300px;
     height: 100vh;
     background-color: white;
-    padding: 80px 40px;
+    padding: 80px 20px;
+    /* 左右のパディングを減らして中央寄せをサポート */
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
     z-index: 1000;
+    text-align: center;
+    /* 全体のテキストを中央揃えに */
+    overflow-y: auto;
+    /* スクロールを有効に */
   }
-  
+
   .nav-menu.open {
     right: 0;
   }
-  
+
   .nav-menu ul {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    /* 中央揃え */
     height: auto;
+    width: 100%;
+    /* 幅を100%に */
   }
-  
+
   .nav-menu li {
     margin: 15px 0;
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    /* 縦方向に並べる */
+    align-items: center;
+    /* 中央揃え */
+    justify-content: center;
+    /* 中央揃え */
   }
-  
-  .nav-menu a {
+
+  .nav-link-with-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 中央揃え */
+    width: 100%;
+    text-align: center;
+    /* テキストを中央揃え */
+  }
+
+  .nav-menu>ul>li>a,
+  .nav-menu>ul>li>div>a {
     font-size: 18px;
-    display: block;
-    width: 100%;
-    padding: 8px 0;
-    border-radius: 0;
+    display: inline-block;
+    /* インライン要素として中央揃えをサポート */
+    width: auto;
+    /* 自動幅に設定 */
+    padding: 8px 20px;
+    margin: 0 auto;
+    /* 左右のマージンを自動に設定して中央揃え */
+    text-align: center;
+    /* テキストを中央揃え */
   }
-  
-  /* モバイル用のドロップダウンメニュー */
+
+  /* モバイル用のドロップダウンメニュー - 固定位置で表示 */
   .dropdown-menu {
-    position: static; /* 絶対配置ではなく通常のフロー内に */
-    transform: none; /* 中央揃えの変換をリセット */
-    width: 100%;
-    box-shadow: none;
-    border-left: 2px solid #eee;
-    padding: 5px 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px; /* 左側にインデント */
-    animation: none;
-    display: block; /* 常に表示 */
+    position: absolute;
+    /* fixedから absoluteに変更 */
+    transform: translateX(-50%);
+    /* 中央揃えの変換を復活 */
+    left: 50%;
+    /* 親要素の中央に配置 */
+    top: 100%;
+    /* 親要素の真下に配置 */
+    width: 260px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
+    margin: 5px 0 0 0;
+    /* 上部にマージンを追加 */
+    z-index: 1100;
+    max-height: none;
+    overflow-y: visible;
   }
-  
+
+  /* ドロップダウンメニュー内のリンク */
   .dropdown-menu a {
-    padding: 8px 15px;
+    padding: 10px 15px;
     font-size: 16px;
-    margin: 2px 0;
+    margin: 5px auto;
+    width: auto;
+    display: block;
+    text-align: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
   }
-  
+
+  .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+  }
+
+  .dropdown-arrow {
+    margin-left: 5px;
+  }
+
   .nav-item a.active {
-    border-radius: 0;
-    padding: 8px 0;
+    border-radius: 28px;
+    padding: 8px 20px;
     box-shadow: none;
-    background: transparent;
-    color: #fa5c2a !important;
-    -webkit-text-fill-color: #fa5c2a; /* モバイル表示の場合の上書き */
+    background: #fa5c2a;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff;
   }
-  
-  .nav-menu li + li {
+
+  .nav-menu li+li {
     margin-left: 0;
+    margin-top: 15px;
   }
 }

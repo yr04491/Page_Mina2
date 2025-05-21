@@ -1,5 +1,5 @@
 // src/components/Header/Navigation.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import './Navigation.css';
 
 const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick, expandedMenus, toggleMenu }) => {
@@ -26,6 +26,7 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
   // ドロップダウンの切り替え
   const toggleDropdown = (e, menu) => {
     e.preventDefault();
+    e.stopPropagation(); // イベント伝播を停止
     toggleMenu(menu);
   };
 
@@ -34,7 +35,7 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
       <ul>
         {/* About Menu */}
         <li
-          className="nav-item nav-about"
+          className={`nav-item nav-about ${expandedMenus.about ? 'has-dropdown-open' : ''}`}
           onMouseEnter={() => handleMouseEnter('about')}
           onMouseLeave={() => handleMouseLeave('about')}
         >
@@ -52,7 +53,6 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('mission'); }}>Mission</a>
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('vision'); }}>Vision</a>
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('about-company'); }}>会社紹介</a>
-                {/*<a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('officers'); }}>会社役員</a>*/}
                 <a href="#" onClick={(e) => { e.preventDefault(); handleNavClick('history'); }}>沿革</a>
               </div>
             )}
@@ -79,7 +79,7 @@ const Navigation = ({ isOpen, isMobile, activeNav, setActiveNav, handleNavClick,
 
         {/* Member Menu - New dropdown menu */}
         <li
-          className="nav-item nav-member"
+          className={`nav-item nav-member ${expandedMenus.member ? 'has-dropdown-open' : ''}`}
           onMouseEnter={() => handleMouseEnter('member')}
           onMouseLeave={() => handleMouseLeave('member')}
         >

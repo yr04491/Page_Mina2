@@ -14,7 +14,8 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
     services: false,
     news: false,
     recruit: false,
-    contact: false
+    contact: false,
+    member: false
   });
 
   // ウィンドウサイズの変更を監視
@@ -23,6 +24,17 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
       if (!mobile && navOpen) setNavOpen(false);
+      // デスクトップサイズになったらドロップダウンをリセット
+      if (!mobile) {
+        setExpandedMenus({
+          about: false,
+          services: false,
+          news: false,
+          recruit: false,
+          contact: false,
+          member: false
+        });
+      }
     };
     
     window.addEventListener('resize', handleResize);
@@ -45,18 +57,51 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
   // ナビゲーションの状態を管理する関数
   const toggleNavOpen = () => {
     setNavOpen(!navOpen);
+    // ナビゲーションを閉じるときにドロップダウンもすべて閉じる
+    if (navOpen) {
+      resetExpandedMenus();
+    }
+  };
+
+  // すべてのドロップダウンをリセットする関数
+  const resetExpandedMenus = () => {
+    setExpandedMenus({
+      about: false,
+      services: false,
+      news: false,
+      recruit: false,
+      contact: false,
+      member: false
+    });
+    setActiveNav(null);
   };
 
   const closeNav = () => {
     setNavOpen(false);
+    resetExpandedMenus();
   };
 
   // メニュー項目の展開/収納を切り替える
   const toggleMenu = (menu) => {
-    setExpandedMenus(prev => ({
-      ...prev,
-      [menu]: !prev[menu]
-    }));
+    // モバイル表示時は、一つのメニューを開くときに他のメニューを閉じる
+    if (isMobile) {
+      const updatedMenus = {
+        about: false,
+        services: false,
+        news: false,
+        recruit: false,
+        contact: false,
+        member: false
+      };
+      updatedMenus[menu] = !expandedMenus[menu];
+      setExpandedMenus(updatedMenus);
+    } else {
+      // デスクトップ表示時は従来通りの動作
+      setExpandedMenus(prev => ({
+        ...prev,
+        [menu]: !prev[menu]
+      }));
+    }
     setActiveNav(expandedMenus[menu] ? null : menu);
   };
 
@@ -70,7 +115,10 @@ const Header = forwardRef(({ scrollToSection }, ref) => {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`} ref={ref}>
       <div className="navbar-container">
         {/* ロゴ */}
-        <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <div className="logo" onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          closeNav(); // ロゴクリック時もナビゲーションを閉じる
+        }}>
           Minakano
         </div>
         
