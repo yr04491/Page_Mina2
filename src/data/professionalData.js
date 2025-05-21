@@ -4,7 +4,7 @@
 const professionalData = [
   {
     id: 1,
-    name: '佐藤 啓太',
+    name: '上田 啓太',
     romaji: 'SATO Keita',
     position: 'エンジニア',
     description: 'AIと教育の融合を目指すテクノロジスト',
